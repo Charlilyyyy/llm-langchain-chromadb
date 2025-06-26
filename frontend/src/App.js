@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-const API_URL = "http://localhost:8000";
+const API_URL = "http://127.0.0.1:8000";
 
 function App() {
   const [user, setUser] = useState("user1");
@@ -18,7 +18,7 @@ function App() {
   const sendMessage = async (e) => {
     e.preventDefault();
     setLoading(true);
-    console.log("wow")
+    console.log(user)
     const res = await axios.post(`${API_URL}/chat`, { user, message });
     setHistory([...history, { user, message }, { user: "bot", message: res.data.response }]);
     setMessage("");
